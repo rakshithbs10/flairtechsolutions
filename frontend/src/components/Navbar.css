@@ -1,0 +1,64 @@
+/* Navbar.css */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15, 35, 71, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: box-shadow 0.3s;
+}
+.navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.nav-brand {
+  font-family: 'Poppins', sans-serif; font-size: 1.35rem; font-weight: 700;
+  display: flex; align-items: baseline; gap: 0; color: #fff; letter-spacing: -0.5px;
+}
+.brand-flair { color: #fff; }
+.brand-tech { color: var(--accent); }
+.brand-tag { font-size: 0.7rem; font-weight: 400; color: rgba(255,255,255,0.55); margin-left: 6px; letter-spacing: 1px; text-transform: uppercase; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 4px; list-style: none;
+}
+.nav-links a {
+  display: block; padding: 8px 14px; border-radius: 6px;
+  color: rgba(255,255,255,0.78); font-size: 0.9rem; font-weight: 500;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: #fff; background: rgba(255,255,255,0.1);
+}
+.nav-links a.active { color: var(--accent-light); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 6px;
+}
+.hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; border-radius: 2px; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-user-menu { display: flex; align-items: center; gap: 8px; }
+.nav-user-btn { display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 6px; color: rgba(255,255,255,0.85); font-size: 0.9rem; font-weight: 500; transition: background 0.2s; }
+.nav-user-btn:hover, .nav-user-btn.active { background: rgba(255,255,255,0.1); color: #fff; }
+.nav-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.nav-username { font-size: 0.88rem; }
+.nav-signout { font-size: 0.82rem !important; padding: 6px 14px !important; }
+.nav-auth-links { display: flex; align-items: center; gap: 8px; }
+.nav-login-link { color: rgba(255,255,255,0.78); font-size: 0.9rem; font-weight: 500; padding: 8px 12px; border-radius: 6px; transition: color 0.2s, background 0.2s; }
+.nav-login-link:hover { color: #fff; background: rgba(255,255,255,0.1); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    position: absolute; top: 68px; left: 0; right: 0;
+    flex-direction: column; gap: 0; background: var(--primary-dark);
+    padding: 8px 0; display: none; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 14px 24px; border-radius: 0; }
+  .nav-user-menu, .nav-auth-links { padding: 10px 24px; flex-direction: row; flex-wrap: wrap; gap: 10px; }
+}

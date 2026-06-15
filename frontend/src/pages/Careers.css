@@ -1,0 +1,51 @@
+/* Careers.css */
+.careers-page .page-header { padding: 100px 0 60px; }
+
+.jobs-list { display: flex; flex-direction: column; gap: 24px; max-width: 900px; margin: 0 auto; }
+.job-card { border-left: 4px solid var(--primary); }
+.job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; gap: 16px; flex-wrap: wrap; }
+.job-title { font-size: 1.25rem; color: var(--primary); margin-bottom: 10px; }
+.job-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.job-date { font-size: 0.82rem; color: var(--text-light); white-space: nowrap; }
+.job-desc { color: var(--text-body); line-height: 1.75; margin-bottom: 14px; font-size: 0.95rem; }
+.job-requirements { background: var(--bg-light); border-radius: var(--radius-sm); padding: 12px 16px; font-size: 0.88rem; margin-bottom: 20px; color: var(--text-body); }
+
+.job-footer { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.login-hint { font-size: 0.82rem; color: var(--text-light); }
+.loading-state { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 60px; color: var(--text-light); }
+.empty-state { text-align: center; padding: 60px; color: var(--text-light); }
+
+/* ── File Drop ────────────────────────────────── */
+.file-drop {
+  border: 2px dashed var(--border); border-radius: var(--radius-sm);
+  padding: 28px 20px; text-align: center; cursor: pointer;
+  transition: border-color 0.2s, background 0.2s; color: var(--text-body);
+}
+.file-drop:hover, .file-drop.drag { border-color: var(--primary-light); background: #eff6ff; }
+.file-drop.error { border-color: var(--error); }
+.file-drop label { cursor: pointer; font-size: 0.9rem; }
+.file-selected { display: flex; align-items: center; justify-content: space-between; }
+.file-selected button { background: none; border: none; color: var(--text-light); font-size: 1rem; cursor: pointer; }
+
+/* ── Modal ────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(10,20,50,0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000; padding: 20px; backdrop-filter: blur(4px);
+}
+.modal {
+  background: var(--bg-white); border-radius: var(--radius-lg);
+  max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+}
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 28px; border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; background: var(--bg-white); z-index: 1;
+}
+.modal-header h3 { font-size: 1.2rem; color: var(--primary); }
+.modal-close { background: none; border: none; font-size: 1.2rem; color: var(--text-light); cursor: pointer; padding: 4px; border-radius: 4px; }
+.modal-close:hover { background: var(--bg-light); color: var(--text-dark); }
+.modal-body { padding: 28px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }

@@ -1,0 +1,43 @@
+/* Auth.css */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 100%);
+  padding: 100px 24px 40px;
+}
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 40px;
+}
+.auth-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.auth-logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.auth-header h2 { font-size: 1.5rem; margin-bottom: 6px; }
+.auth-header p { color: var(--text-light); font-size: 0.9rem; }
+.auth-submit {
+  width: 100%;
+  justify-content: center;
+  padding: 14px;
+  font-size: 1rem;
+  margin-top: 4px;
+}
+.auth-switch {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+.auth-switch a { color: var(--primary-light); font-weight: 600; }
+.auth-switch a:hover { color: var(--accent); }
+.form-row-auth { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 500px) { .form-row-auth { grid-template-columns: 1fr; } }

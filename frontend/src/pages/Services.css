@@ -1,0 +1,13 @@
+/* Services.css */
+.services-page .page-header { padding: 100px 0 60px; }
+.services-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-top: 40px; }
+.service-detail-card { display: flex; flex-direction: column; gap: 12px; }
+.sd-icon { font-size: 2.4rem; }
+.service-detail-card h3 { font-size: 1.15rem; color: var(--primary); }
+.service-detail-card p { font-size: 0.9rem; line-height: 1.75; color: var(--text-body); flex: 1; }
+.sd-skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.skill-tag { background: var(--bg-white); border: 1px solid var(--border); border-radius: 100px; padding: 4px 12px; font-size: 0.78rem; color: var(--primary); font-weight: 500; }
+
+@media (max-width: 700px) {
+  .services-detail-grid { grid-template-columns: 1fr; }
+}

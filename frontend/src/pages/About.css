@@ -1,0 +1,37 @@
+/* About.css */
+.about-page .page-header { padding: 100px 0 60px; }
+.about-intro-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+.about-intro-text h2 { font-size: 2rem; margin-bottom: 20px; }
+.about-intro-text p { line-height: 1.8; color: var(--text-body); margin-bottom: 16px; }
+.about-visual { }
+.about-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+.about-stat { background: var(--bg-light); border-radius: var(--radius-sm); padding: 24px; text-align: center; border: 1px solid var(--border); }
+.about-stat.accent { background: var(--primary); }
+.about-stat.accent .about-stat-num { color: #fff; }
+.about-stat.accent .about-stat-label { color: rgba(255,255,255,0.7); }
+.about-stat-num { display: block; font-size: 2rem; font-weight: 800; color: var(--primary); font-family: 'Poppins', sans-serif; }
+.about-stat-label { font-size: 0.82rem; color: var(--text-light); }
+.about-mission { background: var(--bg-light); border-radius: var(--radius-sm); padding: 24px; border-left: 4px solid var(--accent); }
+.about-mission h4 { color: var(--primary); margin-bottom: 8px; }
+.about-mission p { font-size: 0.9rem; line-height: 1.7; color: var(--text-body); }
+
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.value-card { text-align: center; }
+.value-icon { font-size: 2.2rem; margin-bottom: 12px; }
+.value-card h3 { color: var(--primary); font-size: 1.05rem; margin-bottom: 10px; }
+.value-card p { font-size: 0.88rem; line-height: 1.7; color: var(--text-body); }
+
+.offices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 720px; margin: 0 auto; }
+.office-card { text-align: center; }
+.office-flag { font-size: 2.5rem; margin-bottom: 12px; }
+.office-card h3 { color: var(--primary); margin-bottom: 10px; }
+.office-card p { color: var(--text-body); line-height: 1.7; font-size: 0.95rem; }
+
+@media (max-width: 900px) {
+  .about-intro-grid { grid-template-columns: 1fr; gap: 40px; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .values-grid { grid-template-columns: 1fr; }
+  .offices-grid { grid-template-columns: 1fr; }
+}
