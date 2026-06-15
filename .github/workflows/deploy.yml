@@ -3,31 +3,25 @@ name: Deploy FlairTech Solutions to Azure App Service
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 env:
   NODE_VERSION: '18.x'
-  AZURE_WEBAPP_NAME: flairtechsolutions-web    # Change to your App Service name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'
+  AZURE_WEBAPP_NAME: flairtechsolutions-web
 
 jobs:
-  build-and-test:
-    name: Build & Test
+  build-and-deploy:
+    name: Build & Deploy
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # ── Build React Frontend ───────────────────────────────────────────────
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
 
       - name: Install frontend dependencies
         working-directory: frontend
@@ -36,53 +30,21 @@ jobs:
       - name: Build React app
         working-directory: frontend
         env:
-          REACT_APP_API_URL: /api
-          CI: false              # Treat warnings as warnings, not errors
+          CI: false
         run: npm run build
 
-      # ── Install Backend Dependencies ───────────────────────────────────────
       - name: Install backend dependencies
         working-directory: backend
         run: npm ci --omit=dev
 
-      # ── Package for deployment ─────────────────────────────────────────────
-      - name: Prepare deployment package
+      - name: Copy frontend build into backend
         run: |
-          mkdir -p deploy/frontend
-          cp -r backend/. deploy/
-          cp -r frontend/build/. deploy/frontend/build/
-          echo "node backend/server.js" > deploy/startup.sh
-          chmod +x deploy/startup.sh
-
-      - name: Upload artifact for deployment
-        uses: actions/upload-artifact@v4
-        with:
-          name: flairtechsolutions-app
-          path: |
-            backend/
-            frontend/build/
-          if-no-files-found: error
-
-  deploy:
-    name: Deploy to Azure
-    runs-on: ubuntu-latest
-    needs: build-and-test
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-
-    environment:
-      name: production
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: flairtechsolutions-app
+          mkdir -p backend/frontend/build
+          cp -r frontend/build/. backend/frontend/build/
 
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .
+          package: backend
