@@ -48,13 +48,9 @@ jobs:
       # ── Package for deployment ─────────────────────────────────────────────
       - name: Prepare deployment package
         run: |
-          mkdir -p deploy
-          # Copy backend
+          mkdir -p deploy/frontend
           cp -r backend/. deploy/
-          # Copy React build into expected location
-          mkdir -p deploy/../frontend/build
-          cp -r frontend/build/. deploy/../frontend/build/
-          # Create startup script for Azure
+          cp -r frontend/build/. deploy/frontend/build/
           echo "node backend/server.js" > deploy/startup.sh
           chmod +x deploy/startup.sh
 
